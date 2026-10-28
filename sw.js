@@ -1,11 +1,11 @@
 /* Decrypting service worker. The host only ever holds ciphertext (enc/<sha256(path)>.bin = IV(12) + AES-GCM). The key comes from the student's link
    (#k=…, never sent to the server), is stored in this browser's IndexedDB by go.html, and every same-origin GET is answered here, decrypted. */
-const BUILD = '20261028141609', CACHE = 'enc-' + BUILD, BASE = new URL(self.registration.scope).pathname;
+const BUILD = 'v1', CACHE = 'enc-' + BUILD, BASE = new URL(self.registration.scope).pathname;
 const BYPASS = /^(go\.html|sw\.js|boot\.js|404\.html|enc\/)/;
 const MIME = {html: 'text/html; charset=utf-8', js: 'text/javascript; charset=utf-8', css: 'text/css; charset=utf-8', json: 'application/json', svg: 'image/svg+xml', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', gif: 'image/gif',
   woff2: 'font/woff2', woff: 'font/woff', ttf: 'font/ttf', mp3: 'audio/mpeg', mp4: 'video/mp4', pdf: 'application/pdf', txt: 'text/plain; charset=utf-8', docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', doc: 'application/msword', xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'};
-let KEY = null, last = {url: '', buf: null};
+let KEY = null, last = {url: '', buf: null, tag: ''};
 const idb = () => new Promise((res, rej) => { const r = indexedDB.open('sec', 1); r.onupgradeneeded = () => r.result.createObjectStore('k'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
 async function loadKey(){
   if (KEY) return KEY; const db = await idb(), raw = await new Promise(res => { const q = db.transaction('k').objectStore('k').get('key'); q.onsuccess = () => res(q.result); q.onerror = () => res(null); });
@@ -22,12 +22,15 @@ self.addEventListener('fetch', e => {
 });
 async function plain(p){
   const key = await loadKey(); if (!key) return null; const url = BASE + 'enc/' + await hashPath(p) + '.bin';
-  if (last.url === url) return last.buf;
-  const cache = await caches.open(CACHE); let r = await cache.match(url);
-  if (!r){ r = await fetch(url); if (!r.ok) return 404; await cache.put(url, r.clone()); }
+  const cache = await caches.open(CACHE); let r = null;
+  try { r = await fetch(url); if (r.ok) cache.put(url, r.clone()); else if (r.status === 404) { r = null; await cache.delete(url); return 404; } else r = null; } catch (x) { r = null; }
+  if (!r) r = await cache.match(url);                      // offline: what the student opened before
+  if (!r) return 404;
+  const tag = r.headers.get('etag') || r.headers.get('last-modified') || '';
+  if (tag && last.url === url && last.tag === tag) return last.buf;
   const b = await r.arrayBuffer(); let out;
   try { out = await crypto.subtle.decrypt({name: 'AES-GCM', iv: b.slice(0, 12)}, key, b.slice(12)); } catch (x) { return 403; }
-  if (out.byteLength > 2e6) last = {url, buf: out};
+  if (out.byteLength > 2e6) last = {url, buf: out, tag};
   return out;
 }
 async function serve(req, p){
