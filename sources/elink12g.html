@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- /frame-runtime -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade 12 General – End-of-Term 1 English Revision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#0f766e; --accent2:#14b8a6; --soft:#e6f6f4;
+  --ink:#1c2230; --muted:#5d6678; --line:#e3e6ee; --bg:#f6f7fb; --card:#fff;
+  --ok:#15803d; --okbg:#e8f6ec; --bad:#b42318; --badbg:#fdecea; --warn:#b45309; --warnbg:#fff4e0;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+button{font:inherit;cursor:pointer}
+textarea,input{font:inherit}
+h1,h2,h3,h4{line-height:1.25;margin:0}
+/* header */
+.top{background:var(--accent);color:#fff;padding:22px 20px 0;position:relative;overflow:hidden}
+.top::after{content:"";position:absolute;right:-60px;top:-80px;width:280px;height:280px;border-radius:50%;background:var(--accent2);opacity:.35}
+.top-in{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.85;font-weight:600}
+.top h1{font-size:clamp(24px,3.4vw,34px);font-weight:800;margin:4px 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:4px 11px;border-radius:999px;font-size:13px;font-weight:600}
+.scorebar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;font-size:14px}
+.meter{flex:1;min-width:160px;max-width:320px;height:9px;background:rgba(255,255,255,.22);border-radius:9px;overflow:hidden}
+.meter>i{display:block;height:100%;width:0;background:#fff;border-radius:9px;transition:width .4s}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{color:#fff;text-decoration:none;padding:11px 15px;border-radius:12px 12px 0 0;font-weight:600;font-size:14.5px;white-space:nowrap;opacity:.82}
+nav a:hover{opacity:1;background:rgba(255,255,255,.12)}
+nav a.on{background:var(--bg);color:var(--accent);opacity:1}
+main{max-width:1180px;margin:0 auto;padding:26px 20px 70px}
+section.view{display:none}
+section.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.h2{font-size:24px;font-weight:800;margin-bottom:4px}
+.sub{color:var(--muted);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-bottom:18px}
+.card h3{font-size:18px;margin-bottom:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--soft);color:var(--accent);letter-spacing:.02em}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.btn{border:1px solid var(--line);background:#fff;padding:9px 15px;border-radius:10px;font-weight:600;font-size:14.5px;color:var(--ink);transition:.15s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.pri:hover{filter:brightness(1.08);color:#fff}
+.btn.ghost{background:transparent}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+/* overview table */
+table.ov{width:100%;border-collapse:collapse;font-size:15px}
+table.ov th{text-align:left;font-size:13px;color:var(--muted);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--line)}
+table.ov td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.ov td.m{font-weight:800;color:var(--accent);text-align:right;white-space:nowrap}
+table.ov a{color:var(--accent);font-weight:700;text-decoration:none}
+.bigstat{display:flex;gap:14px;flex-wrap:wrap}
+.bigstat div{flex:1;min-width:140px;background:var(--soft);border-radius:12px;padding:14px 16px}
+.bigstat b{display:block;font-size:26px;color:var(--accent)}
+/* flashcards */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.flip{perspective:900px;height:150px;border:0;background:none;padding:0;text-align:left}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;border-radius:12px;padding:14px;backface-visibility:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.flip .f{background:#fff;justify-content:center;align-items:center;text-align:center}
+.flip .f b{font-size:19px;color:var(--accent)}
+.flip .f span{font-size:12px;color:var(--muted);margin-top:6px}
+.flip .b{background:var(--soft);transform:rotateY(180deg);font-size:13.5px;overflow:auto}
+.flip .b em{display:block;margin-top:6px;color:var(--muted);font-size:12.5px}
+.grouph{font-weight:800;margin:20px 0 10px;display:flex;align-items:center;gap:10px}
+.grouph:first-child{margin-top:0}
+/* passage */
+.passage{font-family:"Literata",Georgia,serif;font-size:17px;line-height:1.8;background:#fffdf8;border:1px solid #efe7d6;border-radius:var(--r);padding:22px 24px}
+.passage h3{font-family:"Plus Jakarta Sans",sans-serif;text-align:center;font-size:19px;margin-bottom:12px;color:var(--accent)}
+.passage p{margin:0 0 14px}
+.passage p .pn{font-family:"Plus Jakarta Sans",sans-serif;font-size:12px;font-weight:800;color:#fff;background:var(--accent);border-radius:6px;padding:1px 6px;margin-right:6px;vertical-align:2px}
+.gap{display:inline-block;min-width:96px;border-bottom:2px dashed var(--accent);padding:0 6px;font-weight:700;font-family:"Plus Jakarta Sans",sans-serif;font-size:15px;color:var(--accent);text-align:center;line-height:1.5}
+.gap.ok{border-bottom:2px solid var(--ok);color:var(--ok);background:var(--okbg);border-radius:4px 4px 0 0}
+.gap.bad{border-bottom:2px solid var(--bad);color:var(--bad);background:var(--badbg);border-radius:4px 4px 0 0}
+.readwrap{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;align-items:start}
+.readwrap .passage{position:sticky;top:14px;max-height:calc(100vh - 28px);overflow:auto}
+@media(max-width:900px){.readwrap{grid-template-columns:1fr}.readwrap .passage{position:static;max-height:none}}
+/* questions */
+.q{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 14px;margin-bottom:12px}
+.q .qh{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.q .num{flex:none;width:28px;height:28px;border-radius:8px;background:var(--soft);color:var(--accent);font-weight:800;display:grid;place-items:center;font-size:14px}
+.q .qt{font-weight:600}
+.opts{display:grid;gap:7px}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-size:15px;transition:.12s}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--soft)}
+.opt .L{flex:none;font-weight:800;color:var(--accent);width:18px}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.ok .L{color:var(--ok)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt.bad .L{color:var(--bad)}
+.opts.inline{grid-template-columns:repeat(3,1fr)}
+@media(max-width:600px){.opts.inline{grid-template-columns:1fr}}
+.why{display:none;margin-top:10px;font-size:14px;padding:10px 12px;border-radius:10px;background:var(--warnbg);color:#5a3a06}
+.why.show{display:block}
+.why b.okt{color:var(--ok)} .why b.badt{color:var(--bad)}
+.secscore{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--soft);border-radius:12px;padding:12px 16px;margin:6px 0 18px;font-weight:600}
+.secscore b{color:var(--accent);font-size:18px}
+/* grammar */
+details.gp{background:#fff;border:1px solid var(--line);border-radius:var(--r);margin-bottom:10px;overflow:hidden}
+details.gp summary{list-style:none;padding:14px 16px;display:flex;gap:12px;align-items:center;cursor:pointer;font-weight:700}
+details.gp summary::-webkit-details-marker{display:none}
+details.gp summary::after{content:"+";margin-left:auto;font-size:22px;color:var(--accent);font-weight:400}
+details.gp[open] summary::after{content:"–"}
+details.gp .body{padding:0 16px 16px}
+.rule{background:var(--soft);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.ex{margin:4px 0 12px;padding-left:18px}
+.ex li{margin-bottom:4px}
+.ex u{text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}
+/* writing */
+textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;resize:vertical;min-height:140px;line-height:1.6;background:#fff}
+textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}
+textarea.plan{min-height:58px}
+.counter{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted);margin:8px 0 4px}
+.counter b{color:var(--ink)}
+.prog{height:8px;flex:1;min-width:140px;background:var(--line);border-radius:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--warn);transition:width .3s}
+.prog i.done{background:var(--ok)}
+.check{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:15px;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--accent);margin-top:2px;flex:none}
+.phr{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 14px}
+.phr button{border:1px dashed var(--accent);background:#fff;color:var(--accent);border-radius:8px;padding:5px 10px;font-size:13.5px;font-weight:600}
+.phr button:hover{background:var(--soft)}
+.model{display:none;background:#f3fbf5;border:1px solid #cbe9d4;border-radius:12px;padding:14px 16px;margin-top:10px}
+.model.show{display:block}
+.model p{margin:0 0 10px}
+.rub{width:100%;border-collapse:collapse;font-size:14.5px}
+.rub td{padding:8px 6px;border-bottom:1px solid var(--line)}
+.rub select{font:inherit;padding:4px 6px;border-radius:8px;border:1px solid var(--line)}
+.rub tr.tot td{font-weight:800;border-bottom:0;color:var(--accent)}
+.prompt{border-left:4px solid var(--accent);background:#fff;padding:14px 16px;border-radius:0 12px 12px 0;margin-bottom:14px}
+.prompt ul{margin:8px 0 6px;padding-left:20px}
+/* tips */
+.tip h4{font-size:16px;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.tip ul{margin:6px 0 0;padding-left:18px}
+.tip li{margin-bottom:5px}
+.skillbar{display:grid;grid-template-columns:170px 1fr 60px;gap:10px;align-items:center;margin-bottom:9px;font-size:14.5px}
+.skillbar .prog i{background:var(--accent)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:10px;font-size:14px;transition:.3s;z-index:9}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.quizbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.quizdef{font-size:18px;font-weight:600;margin:6px 0 12px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:20px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="eyebrow">English · End-of-Term 1 Revision · 2026–2027</div>
+    <h1 id="ttl"></h1>
+    <div class="chips" id="chips"></div>
+    <div class="scorebar">
+      <span>Mock exam (Parts 1–3): <b id="mockTop">0</b> / 60</span>
+      <span class="meter"><i id="mockBar"></i></span>
+      <span id="answeredTop" style="opacity:.85"></span>
+    </div>
+    <nav id="nav"></nav>
+  </div>
+</header>
+<main id="main"></main>
+<footer>Practice material written to match the Cycle 3 End-of-Term 1 Test Specifications. The real exam uses different texts.</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const D = {"grade": "Grade 12 General", "short": "G12 General", "stage": "Stage 8", "cefr": "B2.1", "accent": "#0f766e", "accent2": "#14b8a6", "soft": "#e6f6f4", "themes": ["Money Talks", "Nail That Job!"], "parts": [["Part 1", "Vocabulary", "Multiple-choice gap fill: 1 text (~170 words), 5 gaps, A/B/C", "5 × 2", 10], ["Part 2", "Grammar", "Multiple-choice gap fill: 1 expository text (~170 words), 5 gaps, A/B/C", "5 × 2", 10], ["Part 3A", "Reading (at level)", "1 expository text (300–330 words), 8 questions, A/B/C. Theme: Consumerism / Does money talk?", "8 × 3", 24], ["Part 3B", "Reading (beyond level)", "1 harder text (300–330 words), 8 questions, A/B/C. Theme: A Man’s or a Woman’s Job?", "8 × 2", 16], ["Part 4.1", "Writing – summary", "Read a ~180-word text. Write the main ideas in your own words (4–5 sentences).", "", 15], ["Part 4.2", "Writing – opinion essay", "Opinion essay with 3 prompts, at least 200 words, in paragraphs.", "", 25]], "writing_themes": "Nail That Job! – Essential Skills for Your Future Career  |  Money Talks – The Effects of Advertising", "vocab_groups": [{"theme": "Money Talks", "words": [["broke", "having no money at all (informal)", "I can’t come to the mall – I’m broke until the end of the month."], ["income", "money you receive regularly, e.g. from a job", "Her monthly income increased after her promotion."], ["make ends meet", "have just enough money to pay for the things you need", "With rent so high, many families struggle to make ends meet."], ["raise capital", "collect money to start or grow a business", "He showed his plan to investors to raise capital for his café."], ["student loan", "money borrowed to pay for studies, which must be paid back", "She took a student loan and will repay it after graduation."], ["scholarship", "money given to a student (often for good grades) that is NOT paid back", "He won a scholarship to study engineering abroad."], ["put aside", "save money for later", "Try to put aside 10% of your pocket money every week."], ["withdrawal", "taking money out of a bank account", "She made a withdrawal of 500 dirhams from the ATM."], ["take risks", "do something that might fail or lose money", "Entrepreneurs must be willing to take risks."], ["risk-taker", "a person who is willing to take risks", "My brother is a real risk-taker; he quit his job to start a company."], ["influence", "have an effect on someone’s behaviour or decisions", "Social media influencers can influence what teenagers buy."], ["persuade", "make someone agree to do something by giving good reasons", "The advert tries to persuade us that we need a new phone."]]}, {"theme": "Nail That Job!", "words": [["career", "the series of jobs a person has during their working life", "She wants a career in medicine."], ["occupation", "a job or profession (formal word)", "Please write your occupation on the form."], ["labor (labour)", "work, especially physical work; workers as a group", "The factory needs more skilled labour."], ["internship", "a short period of work, often for students, to gain experience", "He did a summer internship at a bank."], ["adaptability", "the ability to change to suit new situations", "Employers value adaptability because technology changes fast."], ["communication", "sharing information and ideas clearly with others", "Good communication is essential in a team."], ["experience", "knowledge or skill gained from doing something", "Do you have any experience of working with customers?"], ["shortlisted", "chosen as one of a small group of final candidates", "Five applicants were shortlisted for the interview."], ["background", "a person’s education, family and past experience", "She comes from a background in science."], ["flexible", "able to change easily; not fixed", "The job offers flexible working hours."], ["rigid", "strict and not able to change", "Some companies have rigid rules about dress code."]]}, {"theme": "Career trends (Part 2 text)", "words": [["job security", "being confident that you will not lose your job", "Government jobs usually offer good job security."], ["outsourcing", "paying another company (often abroad) to do work", "Outsourcing customer service can reduce costs."], ["workforce", "all the people who work in a company or country", "Women now make up a large part of the workforce."], ["telecommuting", "working from home using the internet", "Telecommuting saves employees hours of travel."], ["globalization", "the process of the world’s economies becoming more connected", "Globalization means companies compete with the whole world."], ["upgrade (skills)", "improve your skills to a higher level", "Workers must upgrade their skills to stay competitive."], ["drawback", "a disadvantage or problem", "The main drawback of the job is the long hours."]]}], "vocab_sets": [{"title": "Set A – From Pocket Money to Business Plan", "theme": "Money Talks", "text": "When Hamad was sixteen, he was always [1] before the end of the month. His only [2] was a small weekly allowance from his parents, and it was never enough. Instead of complaining, he decided to start a small business selling handmade phone cases online. First, he needed to [3] to buy materials, so he presented a careful plan to his uncle, who agreed to lend him 2,000 dirhams. Hamad knew that he would have to [4]: the business might fail and he could lose everything. Fortunately, his designs became popular on social media, and within a year he had paid back the money. Now nineteen, Hamad is studying business at university. He did not need to take out a [5], because he won a scholarship for his excellent grades. “Every month I still put aside part of my profits,” he says. “Starting young taught me that money is not only about spending. It is about planning, patience and making smart choices.”", "gaps": [{"opts": ["broke", "flexible", "shortlisted"], "why": "‘Broke’ = having no money. The clue is ‘before the end of the month’ and ‘it was never enough’."}, {"opts": ["income", "occupation", "withdrawal"], "why": "His allowance was the money he received regularly = his income."}, {"opts": ["raise capital", "make ends meet", "put aside"], "why": "He needed money to buy materials for a business → raise capital."}, {"opts": ["take risks", "persuade", "influence"], "why": "‘The business might fail’ → he had to take risks."}, {"opts": ["student loan", "background", "career"], "why": "A student loan is borrowed for studies. He didn’t need one because he had a scholarship."}]}, {"title": "Set B – Getting Shortlisted", "theme": "Nail That Job!", "text": "Last summer, Reem applied for an [1] at a large engineering company in Dubai. She had no paid [2], but she had volunteered at a science festival and led her school’s robotics team. She had also completed an online course in project management during the holidays. To prepare, she researched the company carefully and practised her answers with her older sister. A week later, she received an email saying that she had been [3] for an interview. During the interview, the manager asked how she would deal with sudden changes to a project. Reem explained that [4] is one of her strongest skills: she enjoys learning new tools and does not panic when plans change. She also talked about the importance of clear [5] between team members, especially when people work in different offices. Two days later, she was offered the position. “Your background is not what impressed us most,” the manager told her. “It was your attitude.” Reem now believes that a successful career begins with small, brave steps.", "gaps": [{"opts": ["internship", "labour", "drawback"], "why": "A student applying for short work experience at a company → internship. Note ‘an’ before a vowel sound."}, {"opts": ["experience", "occupation", "income"], "why": "‘No paid experience’ = she had never done a paid job before."}, {"opts": ["shortlisted", "persuaded", "influenced"], "why": "Chosen as one of the final candidates for an interview = shortlisted."}, {"opts": ["adaptability", "rigidity", "capital"], "why": "Dealing well with sudden changes = adaptability."}, {"opts": ["communication", "withdrawal", "globalization"], "why": "Sharing information between team members = communication."}]}], "grammar_points": [{"code": "G.19.2", "name": "Verb forms: to-infinitive / -ing / bare infinitive", "rule": "Some verbs are followed by <b>to + infinitive<\/b> (decide, hope, plan, want, afford, manage, refuse, agree, allow sb). Others take <b>-ing<\/b> (enjoy, avoid, consider, finish, suggest, mind, keep). <b>make / let<\/b> and modal verbs take the infinitive <b>without to<\/b>.", "examples": ["She <u>decided to save<\/u> half of her salary.", "He <u>enjoys working<\/u> in a team.", "My manager <u>let me leave<\/u> early."], "check": {"q": "Most students can’t afford ____ a new car.", "opts": ["to buy", "buying", "buy"], "why": "afford + to-infinitive."}}, {"code": "G.10.1", "name": "Present simple passive", "rule": "<b>am / is / are + past participle<\/b>. Use it when the action is more important than who does it, or for facts and processes.", "examples": ["Thousands of jobs <u>are advertised<\/u> online every day.", "The salary <u>is paid<\/u> at the end of the month."], "check": {"q": "Job adverts ____ on the company website every Monday.", "opts": ["are posted", "post", "are posting"], "why": "The adverts don’t post themselves → passive: are + posted."}}, {"code": "G.10.3", "name": "Present continuous passive", "rule": "<b>am / is / are + being + past participle<\/b>. Use it for actions happening now or around now.", "examples": ["A new office <u>is being built<\/u> in Abu Dhabi.", "Many tasks <u>are being automated<\/u> these days."], "check": {"q": "Right now, the candidates ____ by the manager.", "opts": ["are being interviewed", "are interviewing", "is interviewed"], "why": "‘Right now’ + passive → are being interviewed."}}, {"code": "G.4.2", "name": "Non-defining relative clauses", "rule": "Add <b>extra<\/b> information between commas. Use <b>who<\/b> (people), <b>which<\/b> (things), <b>whose<\/b> (possession), <b>where<\/b> (places). <b>Never use ‘that’<\/b> in a non-defining clause.", "examples": ["My uncle, <u>who is an engineer<\/u>, works in Abu Dhabi.", "Dubai, <u>which is a global business hub<\/u>, attracts many workers."], "check": {"q": "Telecommuting, ____ saves time, is popular with parents.", "opts": ["which", "that", "who"], "why": "Thing + commas → which (never ‘that’ after a comma)."}}, {"code": "G.18", "name": "Reported speech", "rule": "When reporting, move the tense <b>one step back<\/b>: present → past, will → would, can → could, need → needed. <b>say<\/b> (something) / <b>tell<\/b> (someone). Change pronouns and time words (today → that day).", "examples": ["“I am tired.” → She <u>said that she was<\/u> tired.", "“We will hire you.” → They <u>told him that they would<\/u> hire him."], "check": {"q": "“I need more experience.” → He said that he ____ more experience.", "opts": ["needed", "needs", "will need"], "why": "Present simple moves back to past simple: need → needed."}}, {"code": "G.2.8", "name": "Adverbs of degree", "rule": "They show <b>how much<\/b>: very, extremely, really, quite, fairly, rather, completely, <b>too<\/b> (more than needed – negative), <b>enough<\/b> (comes AFTER the adjective).", "examples": ["The interview was <u>extremely<\/u> difficult.", "He isn’t <u>experienced enough<\/u> for the role.", "The salary is <u>too<\/u> low to live on."], "check": {"q": "The salary is ____ low for me to live on.", "opts": ["too", "enough", "much"], "why": "too + adjective + to-infinitive = more than is acceptable."}}, {"code": "G.6.2", "name": "Subordinating conjunctions", "rule": "They join a main clause to a dependent clause: <b>because, since<\/b> (reason), <b>although, even though<\/b> (contrast), <b>unless<\/b> (= if not), <b>so that<\/b> (purpose), <b>while, when, as soon as<\/b> (time).", "examples": ["She got the job <u>although<\/u> she had little experience.", "You won’t save money <u>unless<\/u> you make a budget."], "check": {"q": "She got the job ____ she had very little experience.", "opts": ["although", "because", "unless"], "why": "Contrast (surprising result) → although."}}], "grammar_text": {"title": "Working from Anywhere", "text": "Thanks to modern technology, the way we work [1] completely. Telecommuting, [2] was once quite rare, is now common in many industries. In the UAE, several organisations now allow their employees [3] from home on certain days. Many workers say that they feel [4] productive at home because there are fewer interruptions and no stressful journeys. This is particularly true for parents of young children, who appreciate being able to spend more time at home. However, telecommuting also has some drawbacks. Some employees feel lonely, and others find it hard to separate work from family life. Companies are changing, too. More and more tasks are outsourced to freelancers in other countries, [5] this can reduce job security for local staff. In a recent survey, one manager said that her company was planning to offer flexible hours to everyone by 2030 because she believed it would attract more talented staff. Experts agree that the workforce of tomorrow will need to upgrade its skills regularly in order to keep up with globalization.", "gaps": [{"opts": ["is being transformed", "is transforming", "transforms"], "code": "G.10.3", "why": "The way we work doesn’t transform itself; it is happening now → present continuous passive."}, {"opts": ["which", "that", "who"], "code": "G.4.2", "why": "Extra information about a thing, between commas → which."}, {"opts": ["to work", "working", "work"], "code": "G.19.2", "why": "allow + someone + to-infinitive."}, {"opts": ["extremely", "enough", "too"], "code": "G.2.8", "why": "‘enough’ must come after the adjective, and ‘too’ is negative. extremely productive = very productive."}, {"opts": ["although", "so that", "unless"], "code": "G.6.2", "why": "Outsourcing is common, but it has a negative side → contrast → although."}]}, "reading": [{"id": "reading-a", "part": "Part 3A", "level": "At Grade Level Goal (B2.1)", "marks": 3, "theme": "Money Talks – Does money talk?", "title": "Can Money Buy Happiness?", "paras": ["It is one of the oldest questions in the world: can money buy happiness? For many years, the answer seemed simple. Most people believed that the more money you had, the happier you would be. However, researchers who study well-being have discovered that the relationship between money and happiness is much more complicated.", "Studies show that money makes a big difference when people do not have enough of it. A family that is struggling to make ends meet often feels worried and stressed, and an increase in income can bring real relief. Once people can pay for their basic needs, such as food, housing and healthcare, extra money still helps, but each additional dirham seems to make a smaller difference to how they feel from day to day.", "What matters even more, it seems, is how people spend their money. In one well-known experiment, volunteers were given a small amount of cash. Half of them were told to spend it on themselves, while the other half were told to spend it on someone else. At the end of the day, the people who had spent the money on others reported feeling happier than those who had treated themselves.", "Researchers have also found that spending money on experiences, such as a trip with family or a cooking class, tends to bring more lasting happiness than buying possessions. A new phone is exciting for a few weeks, but memories of a special trip can make us smile for years. Experiences are also often shared with other people, which strengthens our relationships.", "So, does money talk? It certainly speaks, but perhaps not as loudly as we think. Having enough money to live comfortably is important, but beyond that point, our happiness depends much more on our relationships, our health and the choices we make. The real question may not be how much money we have, but how wisely we use it."], "qs": [{"skill": "Specific information", "q": "According to paragraph 1, what did most people use to believe?", "opts": ["More money brings more happiness.", "Money is not important for happiness.", "Happiness cannot be studied scientifically."], "why": "Paragraph 1: ‘the more money you had, the happier you would be.’"}, {"skill": "Specific information", "q": "In the experiment, what were half of the volunteers told to do?", "opts": ["Spend the money on someone else", "Save the money in a bank", "Give the money back to the researchers"], "why": "Paragraph 3: ‘the other half were told to spend it on someone else.’"}, {"skill": "Details", "q": "According to the text, when does extra money make the BIGGEST difference?", "opts": ["When people cannot pay for their basic needs", "When people are already very rich", "When people buy new possessions"], "why": "Paragraph 2: money ‘makes a big difference when people do not have enough of it’. After basic needs, each dirham makes a smaller difference."}, {"skill": "Details", "q": "Who felt happier at the end of the day?", "opts": ["The volunteers who spent the money on others", "The volunteers who spent the money on themselves", "Both groups felt the same"], "why": "Paragraph 3, last sentence."}, {"skill": "Details", "q": "Why do experiences often bring more lasting happiness than possessions?", "opts": ["They create memories and are often shared with others.", "They are always cheaper than possessions.", "They only last for a few weeks."], "why": "Paragraph 4: memories ‘can make us smile for years’ and experiences ‘strengthen our relationships’. Careful: ‘a few weeks’ describes the new phone."}, {"skill": "Main point", "q": "What is the main point of paragraph 2?", "opts": ["Money helps most when people do not have enough.", "Healthcare is the most expensive basic need.", "Families should try to earn more money."], "why": "The whole paragraph explains that the effect of money is biggest when people are struggling, and smaller after that."}, {"skill": "Inference", "q": "Which person would the writer probably say is using money wisely?", "opts": ["Someone who takes their grandparents on a weekend trip", "Someone who buys the newest phone every few months", "Someone who hides all their money in a drawer"], "why": "The writer says experiences, shared with others, bring more lasting happiness. The text doesn’t say this directly, so you must infer it."}, {"skill": "Overall meaning", "q": "What is the overall message of the text?", "opts": ["How we use money matters more than how much we have.", "Rich people are always happier than poor people.", "Money has no effect on happiness at all."], "why": "See the last sentence: ‘not how much money we have, but how wisely we use it.’ Options 2 and 3 are too extreme."}]}, {"id": "reading-b", "part": "Part 3B", "level": "Beyond Grade Level Goal (B2.2)", "marks": 2, "theme": "Nail That Job! – A Man’s or a Woman’s Job?", "title": "Breaking the Mould", "paras": ["When Latifa told her relatives that she wanted to become a pilot, some of them laughed. “They thought it was a phase,” she remembers. “In their minds, flying planes was simply not something women did.” Fifteen years later, Latifa is a captain with a major airline, and the same relatives now proudly show her photograph to their friends.", "Stories like Latifa’s are becoming increasingly common, yet they still attract attention – and that in itself is revealing. Nobody writes newspaper articles about a man who becomes a pilot. The fact that a female captain is still considered newsworthy suggests that our expectations have not yet caught up with reality.", "Similar assumptions affect men. Khalid, a nurse in Al Ain, says that patients sometimes assume he is the doctor. “At first it annoyed me,” he admits, “but now I see it as an opportunity to start a conversation.” He believes that more young men would consider nursing if they saw it as a career that requires skill, calm under pressure and genuine care for people, rather than as ‘women’s work’.", "Where do these expectations come from? Psychologists suggest that they are learned very early. Children notice who does which jobs in the books they read, the programmes they watch and the adults around them. By the age of seven, many have already formed firm ideas about which careers are ‘for boys’ and which are ‘for girls’. These ideas can quietly narrow their ambitions years before they choose a university course.", "Changing this is not simply a matter of fairness; it also makes economic sense. A country that encourages only half of its population to consider certain careers is wasting talent. If the goal is to build a strong, innovative workforce, then the most important question to ask about any candidate is not ‘Is this person a man or a woman?’ but ‘Can this person do the job well?’"], "qs": [{"skill": "Details", "q": "How did some of Latifa’s relatives first react to her plan?", "opts": ["They laughed.", "They paid for her training.", "They decided to become pilots too."], "why": "Paragraph 1: ‘some of them laughed’."}, {"skill": "Details", "q": "What do patients sometimes assume about Khalid?", "opts": ["That he is the doctor", "That he is a student", "That he is a patient’s relative"], "why": "Paragraph 3: ‘patients sometimes assume he is the doctor.’"}, {"skill": "Details", "q": "According to psychologists, by what age have many children formed firm ideas about jobs?", "opts": ["Seven", "Fifteen", "University age"], "why": "Paragraph 4: ‘By the age of seven…’. ‘Fifteen’ appears in paragraph 1 – a distractor."}, {"skill": "Mood / tone / attitude", "q": "How does Khalid feel NOW when patients make the wrong assumption?", "opts": ["Positive – he sees it as a chance to talk", "Angry – he finds it insulting", "Embarrassed – he wants to change jobs"], "why": "‘At first it annoyed me’ (past) … ‘but now I see it as an opportunity’ (present). Watch the time words!"}, {"skill": "Inference", "q": "Why does the writer say that ‘nobody writes newspaper articles about a man who becomes a pilot’?", "opts": ["To show that female pilots are still seen as unusual", "To criticise newspapers for being boring", "To show that men are better pilots"], "why": "If something is ‘newsworthy’, it is unusual. The writer is pointing out that expectations haven’t changed."}, {"skill": "Inference", "q": "In paragraph 4, ‘narrow their ambitions’ suggests that children may …", "opts": ["consider fewer career options", "want to earn more money", "choose a university earlier"], "why": "‘Narrow’ = make smaller. Children limit the careers they imagine for themselves."}, {"skill": "Connections", "q": "Which action would best help to solve the problem described in paragraph 4?", "opts": ["Showing children books and programmes with men and women in many different jobs", "Asking children to choose their career at a young age", "Building more universities"], "why": "The problem comes from what children see in books, programmes and adults. Connect the text to real-world solutions."}, {"skill": "Overall meaning", "q": "What does the text mainly argue?", "opts": ["People should be judged on their ability, not their gender.", "Nursing is a better career than flying.", "Relatives’ opinions are always wrong."], "why": "The final question in the text sums it up: ‘Can this person do the job well?’"}]}], "summary": {"label": "4.1 Summary", "title": "Advertising: Friend or Foe?", "paras": ["Advertising is everywhere: on our phones, on billboards and even inside the games we play. Some experts estimate that an average teenager sees thousands of advertisements every week. Supporters argue that advertising is useful. It informs consumers about new products, helps small businesses reach customers and pays for many free apps and websites. Without advertising, they say, much of the internet would not be free. Others point out that the best adverts can be creative and entertaining. However, critics believe that advertising has serious negative effects, especially on young people. Many adverts use attractive influencers and clever techniques to persuade viewers that they need the latest products to be happy or popular. This can lead to unnecessary spending and, in some cases, debt. Advertisements can also create unrealistic expectations about appearance and lifestyle, which may damage young people’s self-confidence. For these reasons, many schools now teach media literacy, helping students to recognise and question the messages they see. The aim is not to stop people from enjoying adverts, but to help them become smarter, more independent consumers."], "question": "What are the main ideas of the text? Write 4–5 sentences in your own words.", "min": 4, "max": 5, "ideas": ["Advertising is everywhere and teenagers see a huge number of adverts.", "Positive: informs consumers, helps small businesses, keeps apps/websites free.", "Negative: persuades young people to buy things they don’t need → spending and debt.", "Negative: unrealistic images can harm self-confidence.", "Solution: schools teach media literacy so students become smarter consumers."], "model": "The text explains that advertising is all around us and that teenagers see a huge number of adverts. On the positive side, adverts give people information about products, support small companies and keep many online services free. On the negative side, they can push young people to buy things they do not need, which may lead to debt. They can also harm self-confidence by showing unrealistic lifestyles. As a result, schools are teaching students to think critically about the adverts they see.", "rubric": [["Main ideas covered (1 per idea)", 6], ["Own words – not copied", 4], ["4–5 connected sentences", 2], ["Grammar, spelling, punctuation", 3]]}, "essay": {"label": "4.2 Opinion essay", "type": "opinion essay", "intro": "Some people believe that advertising does more harm than good, especially for teenagers.", "task": "Write an opinion essay in which you:", "bullets": ["give your opinion: does advertising do more harm than good? Give reasons.", "explain how advertising influences teenagers’ spending, with examples.", "give advice to teenagers on how to make smart choices as consumers."], "min_words": 200, "planner": [["Introduction", "Introduce the topic + state your opinion clearly."], ["Body 1 – Opinion + reasons", "Reason 1 + example. Reason 2 + example."], ["Body 2 – How adverts influence spending", "Influencers, ‘limited offers’, brands… real examples."], ["Body 3 – Advice", "2–3 pieces of practical advice for teenagers."], ["Conclusion", "Repeat your opinion in new words + final thought."]], "phrases": [["FL.16 Expressing opinion", ["In my opinion, …", "I strongly believe that …", "From my point of view, …", "It seems to me that …", "I am convinced that …"]], ["FL.46 Evidence-based argument", ["According to experts, …", "Research shows that …", "For example, / For instance, …", "This is supported by …", "As a result, …", "Furthermore, / Moreover, …", "On the other hand, …"]], ["FL.24 Giving advice", ["I would advise teenagers to …", "You should / ought to …", "It is a good idea to …", "If I were you, I would …", "Why not …?", "Try to avoid …-ing"]], ["Concluding", ["In conclusion, …", "To sum up, …", "All in all, …", "For these reasons, …"]]], "model": ["Every day, teenagers are surrounded by advertisements on social media, television and even in video games. Although adverts can sometimes be useful, I strongly believe that they do more harm than good for young people.", "My main reason is that advertising encourages unnecessary spending. Influencers are paid to promote products, and many teenagers trust them as if they were friends. For example, when a famous influencer posts about new trainers, thousands of followers rush to buy them, even if their old shoes are perfectly fine. Moreover, online shops use messages such as “Only 3 left!” to make young people feel that they must buy immediately.", "Advertising also affects how teenagers see themselves. Many adverts show perfect faces and luxurious lifestyles, which can make young people feel that they are not good enough. As a result, some teenagers spend money they do not have in order to fit in.", "So, how can teenagers make smarter choices? First, I would advise them to wait 24 hours before buying anything they see online. Second, it is a good idea to set a monthly budget and put aside some money every week. Finally, they should ask themselves who is paying for an advert and why.", "In conclusion, while advertising gives us information about products, its negative effects on spending and self-confidence are more serious. Teenagers who learn to question adverts will become wiser, more independent consumers."], "extra": ["Some people think that a university degree is the best preparation for a career, while others believe internships and work experience are more useful. Write an opinion essay in which you: • give your opinion • explain which skills employers value most • give advice to Grade 12 students on preparing for their future career. (200+ words)", "“Saving money is more important than spending it on experiences.” Write an opinion essay in which you: • say whether you agree or disagree • give reasons and examples • give advice to young people about managing their money. (200+ words)"], "rubric": [["Task: all 3 bullet points answered with reasons", 8], ["Organisation: paragraphs, topic sentences, linking words", 6], ["Vocabulary: range + unit words", 5], ["Grammar & spelling accuracy", 6]]}};
+const $ = (s, el=document) => el.querySelector(s);
+const h = (tag, attrs={}, html="") => { const e=document.createElement(tag); for(const k in attrs){ if(k==="class") e.className=attrs[k]; else if(k.startsWith("on")) e.addEventListener(k.slice(2),attrs[k]); else e.setAttribute(k,attrs[k]); } if(html!==undefined) e.innerHTML=html; return e; };
+const store = { get(k,d){ try{const v=localStorage.getItem("g12rev:"+D.short+":"+k); return v===null?d:JSON.parse(v);}catch(e){return d;} },
+                set(k,v){ try{localStorage.setItem("g12rev:"+D.short+":"+k, JSON.stringify(v));}catch(e){} } };
+function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("show"); clearTimeout(toast._t); toast._t=setTimeout(()=>el.classList.remove("show"),1800); }
+// stable shuffle
+function seedRand(str){ let x=0; for(const c of str) x=(x*31+c.charCodeAt(0))|0; return ()=>{ x^=x<<13; x^=x>>17; x^=x<<5; return ((x>>>0)%10000)/10000; }; }
+function shuffled(arr, seed){ const r=seedRand(seed); const a=arr.map((v,i)=>({v,i})); for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+/* ---------------- score state ---------------- */
+// sections: id -> {marks per q, questions: {qid: correct(bool)}}
+const S = { sections:{}, answers: store.get("answers", {}) };
+function regSection(id, name, perQ, count, mock, skillOf){ S.sections[id]={name,perQ,count,mock,skillOf:skillOf||{}}; }
+function record(qid, ok){ S.answers[qid]=ok; store.set("answers",S.answers); refreshScores(); }
+function secScore(id){ const s=S.sections[id]; let got=0, done=0; for(let i=0;i<s.count;i++){ const v=S.answers[id+":"+i]; if(v!==undefined){done++; if(v) got+=s.perQ;} } return {got,done,max:s.perQ*s.count}; }
+function refreshScores(){
+  let mock=0, done=0, total=0;
+  for(const id in S.sections){ const s=S.sections[id], r=secScore(id);
+    const el=document.querySelector(`[data-sec="${id}"]`); if(el) el.innerHTML=`<span>Your score: <b>${r.got}</b> / ${r.max}</span><span class="small muted">${r.done} of ${s.count} answered</span>`;
+    if(s.mock) mock+=r.got; done+=r.done; total+=s.count; }
+  $("#mockTop").textContent=mock; $("#mockBar").style.width=(mock/60*100)+"%";
+  $("#answeredTop").textContent=`${done} / ${total} practice questions answered`;
+  if(typeof renderScorePage==="function") renderScorePage();
+}
+
+/* ---------------- MCQ builder ---------------- */
+function mcq(container, qid, opts, why, {inline=false, onAnswer=null}={}){
+  const order = shuffled(opts, qid);
+  const box = h("div",{class:"opts"+(inline?" inline":"")});
+  const w = h("div",{class:"why"});
+  const answer = (pickIdx, silent) => {
+    [...box.children].forEach((b,k)=>{ b.disabled=true; const orig=order[k].i; if(orig===0) b.classList.add("ok"); else if(k===pickIdx) b.classList.add("bad"); });
+    const ok = order[pickIdx].i===0;
+    w.innerHTML = (ok?'<b class="okt">✓ Correct.</b> ':'<b class="badt">✗ Not quite.</b> The answer is <b>'+"ABC"[order.findIndex(o=>o.i===0)]+'</b>. ')+why;
+    w.classList.add("show");
+    if(onAnswer) onAnswer(ok, order[pickIdx].v);
+    if(!silent) record(qid, ok);
+  };
+  order.forEach((o,k)=>{ box.appendChild(h("button",{class:"opt",onclick:()=>answer(k)},`<span class="L">${"ABC"[k]}</span><span>${esc(o.v)}</span>`)); });
+  container.append(box,w);
+  // restore
+  if(S.answers[qid]!==undefined && store.get("pick:"+qid,null)!==null){ answer(store.get("pick:"+qid), true); }
+  box.addEventListener("click",e=>{ const b=e.target.closest(".opt"); if(b){ store.set("pick:"+qid,[...box.children].indexOf(b)); } }, true);
+}
+function resetSection(id){ const s=S.sections[id]; for(let i=0;i<s.count;i++){ delete S.answers[id+":"+i]; store.set("pick:"+id+":"+i,null);} store.set("answers",S.answers); build(); go(location.hash.slice(1)||"overview"); toast("Section reset – try again!"); }
+
+/* ---------------- gap fill ---------------- */
+function gapFill(parent, id, title, text, gaps, perQ, mock, tagFn){
+  regSection(id, title, perQ, gaps.length, mock);
+  const wrap=h("div",{class:"grid2"});
+  const pas=h("div",{class:"passage"});
+  pas.innerHTML=`<h3>${esc(title)}</h3><p>`+esc(text).replace(/\[(\d)\]/g,(m,n)=>`<span class="gap" id="${id}-g${n}">(${n}) ________</span>`)+`</p>`;
+  const qs=h("div");
+  gaps.forEach((g,i)=>{
+    const q=h("div",{class:"q"});
+    q.innerHTML=`<div class="qh"><div class="num">${i+1}</div><div class="qt">Gap (${i+1}) ${tagFn?'<span class="tag">'+tagFn(g)+'</span>':''}</div></div>`;
+    mcq(q, id+":"+i, g.opts, g.why, {inline:true, onAnswer:(ok,val)=>{ const gp=$("#"+id+"-g"+(i+1), pas); gp.textContent=`(${i+1}) ${val}`; gp.className="gap "+(ok?"ok":"bad"); }});
+    qs.appendChild(q);
+  });
+  wrap.append(pas,qs);
+  parent.appendChild(wrap);
+  const sc=h("div",{class:"secscore","data-sec":id});
+  const rb=h("button",{class:"btn ghost small",onclick:()=>resetSection(id)},"↺ Try again");
+  const holder=h("div",{class:"row",style:"justify-content:space-between;margin-top:6px"}); holder.append(sc,rb);
+  sc.style.flex="1";
+  parent.appendChild(holder);
+}
+
+/* ---------------- views ---------------- */
+const VIEWS=[["overview","Overview"],["vocabulary","Vocabulary"],["grammar","Grammar"],["reading-a","Reading 3A"],["reading-b","Reading 3B"],["writing","Writing"],["tips","Exam tips"],["score","My score"]];
+
+function build(){
+  const main=$("#main"); main.innerHTML=""; S.sections={};
+  $("#ttl").textContent=D.grade+" — Final Exam Revision";
+  $("#chips").innerHTML=[D.stage, "CEFR "+D.cefr, ...D.themes.map(t=>"Theme: "+t)].map(c=>`<span class="chip">${esc(c)}</span>`).join("");
+  $("#nav").innerHTML=VIEWS.map(([id,n])=>`<a href="#${id}" data-v="${id}">${n}</a>`).join("");
+  VIEWS.forEach(([id])=>main.appendChild(h("section",{class:"view",id:"v-"+id})));
+
+  /* OVERVIEW */
+  const ov=$("#v-overview");
+  const links={"Part 1":"vocabulary","Part 2":"grammar","Part 3A":"reading-a","Part 3B":"reading-b","Part 4.1":"writing","Part 4.2":"writing"};
+  ov.innerHTML=`<div class="h2">How your exam works</div><p class="sub">${D.grade} · ${D.stage} · CEFR ${D.cefr} · Total 100 marks (Reading 60 + Writing 40)</p>
+  <div class="card"><table class="ov"><thead><tr><th>Part</th><th>Skill</th><th>What you will do</th><th>Marks</th></tr></thead><tbody>
+  ${D.parts.map(p=>`<tr><td><a href="#${links[p[0]]}">${p[0]}</a></td><td><b>${p[1]}</b></td><td>${esc(p[2])}${p[3]?` <span class="muted small">(${p[3]})</span>`:""}</td><td class="m">${p[4]}</td></tr>`).join("")}
+  <tr><td></td><td></td><td style="text-align:right;font-weight:800">Total</td><td class="m">100</td></tr></tbody></table></div>
+  <div class="grid2">
+   <div class="card"><h3>📚 What to revise</h3><p class="small">Units: <b>${D.themes.join("</b> and <b>")}</b>.</p><p class="small">Writing themes: ${esc(D.writing_themes)}</p>
+     <div class="row" style="margin-top:12px"><a class="btn pri" href="#vocabulary">Start with vocabulary →</a><a class="btn" href="#tips">Exam tips</a></div></div>
+   <div class="card"><h3>🧭 How to use this page</h3><ul class="small" style="margin:0;padding-left:18px">
+     <li>Work through the tabs in order, or jump to the part you find hardest.</li>
+     <li>Click an answer to get instant feedback and an explanation.</li>
+     <li>Your <b>mock exam score</b> (Parts 1–3, out of 60) updates at the top.</li>
+     <li>In Writing, write your answers, use the checklists and compare with a model answer, then mark yourself out of 40.</li>
+     <li>Check <a href="#score" style="color:var(--accent);font-weight:700">My score</a> to find your weakest question types.</li></ul></div>
+  </div>`;
+
+  /* VOCABULARY */
+  const vv=$("#v-vocabulary");
+  vv.innerHTML=`<div class="h2">Part 1 · Vocabulary</div><p class="sub">Learn the word bank, test yourself, then try two exam-style gap-fill texts (A, B or C).</p>`;
+  const wb=h("div",{class:"card"}); wb.innerHTML=`<h3>Word bank <span class="muted small" style="font-weight:500">– click a card to see the meaning and an example</span></h3>`;
+  D.vocab_groups.forEach(g=>{
+    wb.appendChild(h("div",{class:"grouph"},`<span class="tag">${esc(g.theme)}</span><span class="muted small">${g.words.length} words</span>`));
+    const fg=h("div",{class:"fgrid"});
+    g.words.forEach(w=>{ const b=h("button",{class:"flip",onclick:()=>b.classList.toggle("on")},`<div class="in"><div class="f"><b>${esc(w[0])}</b><span>tap to flip</span></div><div class="b"><b>${esc(w[0])}</b>${esc(w[1])}<em>“${esc(w[2])}”</em></div></div>`); fg.appendChild(b); });
+    wb.appendChild(fg);
+  });
+  vv.appendChild(wb);
+  // quick quiz
+  const allW=D.vocab_groups.flatMap(g=>g.words);
+  const qz=h("div",{class:"card"});
+  qz.innerHTML=`<h3>⚡ Quick quiz: which word matches the meaning?</h3><p class="small muted" style="margin-top:-4px">Unlimited practice – not counted in your score.</p><div class="quizbox"><div class="row" style="justify-content:space-between"><span class="tag" id="qzc">Score 0 / 0</span><button class="btn small" id="qzn">Next question →</button></div><div class="quizdef" id="qzd"></div><div id="qzo"></div></div>`;
+  vv.appendChild(qz);
+  let qzGot=0,qzTot=0;
+  const nextQuiz=()=>{
+    const pick=allW[Math.floor(Math.random()*allW.length)];
+    const others=allW.filter(w=>w!==pick).sort(()=>Math.random()-.5).slice(0,2);
+    $("#qzd",qz).textContent="“"+pick[1]+"”"; const o=$("#qzo",qz); o.innerHTML="";
+    const opts=[pick[0],others[0][0],others[1][0]];
+    const box=h("div",{class:"opts inline"}); const w=h("div",{class:"why"});
+    const ord=opts.map((v,i)=>({v,i})).sort(()=>Math.random()-.5);
+    ord.forEach((x,k)=>box.appendChild(h("button",{class:"opt",onclick:()=>{
+      [...box.children].forEach((b,j)=>{b.disabled=true; if(ord[j].i===0)b.classList.add("ok"); else if(j===k)b.classList.add("bad");});
+      qzTot++; if(x.i===0) qzGot++; $("#qzc",qz).textContent=`Score ${qzGot} / ${qzTot}`;
+      w.innerHTML=`<b>${esc(pick[0])}</b> – “${esc(pick[2])}”`; w.classList.add("show");
+    }},`<span class="L">${"ABC"[k]}</span><span>${esc(x.v)}</span>`)));
+    o.append(box,w);
+  };
+  $("#qzn",qz).onclick=nextQuiz; nextQuiz();
+  D.vocab_sets.forEach((s,i)=>{
+    const c=h("div",{class:"card"});
+    c.innerHTML=`<h3>${esc(s.title)} <span class="tag">${esc(s.theme)}</span> ${i===0?'<span class="tag" style="background:#fff4e0;color:#b45309">Counts in mock exam</span>':'<span class="tag" style="background:#f1f2f5;color:#5d6678">Extra practice</span>'}</h3><p class="small muted" style="margin-top:-4px">Choose the correct word to complete each gap. 2 marks each.</p>`;
+    gapFill(c, "vocab"+i, s.title.replace(/^Set [AB] – /,""), s.text, s.gaps, 2, i===0);
+    vv.appendChild(c);
+  });
+
+  /* GRAMMAR */
+  const gv=$("#v-grammar");
+  gv.innerHTML=`<div class="h2">Part 2 · Grammar</div><p class="sub">These are the ${D.grammar_points.length} grammar points in your test specification. Open each one, read the rule, then try the quick check. Finish with the exam-style text.</p>`;
+  regSection("gquick","Grammar quick checks",1,D.grammar_points.length,false);
+  D.grammar_points.forEach((g,i)=>{
+    const d=h("details",{class:"gp"});
+    d.innerHTML=`<summary><span class="tag">${g.code}</span>${esc(g.name)}</summary>`;
+    const b=h("div",{class:"body"});
+    b.innerHTML=`<div class="rule small">${g.rule}</div><ul class="ex small">${g.examples.map(e=>`<li>${e}</li>`).join("")}</ul>`;
+    const q=h("div",{class:"q",style:"margin:0;background:var(--bg)"}); q.innerHTML=`<div class="qh"><div class="num">?</div><div class="qt">${esc(g.check.q)}</div></div>`;
+    mcq(q,"gquick:"+i,g.check.opts,g.check.why,{inline:true});
+    b.appendChild(q); d.appendChild(b); gv.appendChild(d);
+  });
+  const gsc=h("div",{class:"secscore","data-sec":"gquick"}); gv.appendChild(gsc);
+  const gc=h("div",{class:"card"});
+  gc.innerHTML=`<h3>Exam-style text <span class="tag" style="background:#fff4e0;color:#b45309">Counts in mock exam</span></h3><p class="small muted" style="margin-top:-4px">Read the text and choose the correct word(s) to complete each gap. 2 marks each.</p>`;
+  gapFill(gc,"gram",D.grammar_text.title,D.grammar_text.text,D.grammar_text.gaps,2,true,g=>g.code);
+  gv.appendChild(gc);
+
+  /* READING */
+  D.reading.forEach(r=>{
+    const v=$("#v-"+r.id);
+    v.innerHTML=`<div class="h2">${r.part} · Reading</div><p class="sub">${esc(r.level)} · Theme: ${esc(r.theme)} · 8 questions × ${r.marks} marks = ${8*r.marks}</p>`;
+    const skillOf={};
+    regSection(r.id, r.part+" Reading", r.marks, r.qs.length, true);
+    r.qs.forEach((q,i)=>skillOf[i]=q.skill); S.sections[r.id].skillOf=skillOf;
+    const wrap=h("div",{class:"readwrap"});
+    const pas=h("div",{class:"passage"});
+    pas.innerHTML=`<h3>${esc(r.title)}</h3>`+r.paras.map((p,i)=>`<p><span class="pn">${i+1}</span>${esc(p)}</p>`).join("");
+    const qs=h("div");
+    qs.appendChild(h("p",{class:"small muted",style:"margin-top:0"},"Read the text and choose the correct answer: A, B or C. The label shows the question type – see <a href='#tips' style='color:var(--accent);font-weight:700'>Exam tips</a> for how to answer each type."));
+    r.qs.forEach((q,i)=>{
+      const c=h("div",{class:"q"});
+      c.innerHTML=`<div class="qh"><div class="num">${i+1}</div><div><span class="tag" style="margin-bottom:4px">${esc(q.skill)}</span><div class="qt">${esc(q.q)}</div></div></div>`;
+      mcq(c, r.id+":"+i, q.opts, q.why); qs.appendChild(c);
+    });
+    const sc=h("div",{class:"secscore","data-sec":r.id});
+    const holder=h("div",{class:"row"}); holder.append(sc, h("button",{class:"btn ghost small",onclick:()=>resetSection(r.id)},"↺ Try again")); sc.style.flex="1";
+    qs.appendChild(holder);
+    wrap.append(pas,qs); v.appendChild(wrap);
+  });
+
+  /* WRITING */
+  buildWriting();
+  /* TIPS */
+  buildTips();
+  /* SCORE */
+  $("#v-score").innerHTML=`<div class="h2">My score</div><p class="sub">Your results so far. Use them to decide what to revise next.</p><div id="scoreBody"></div>`;
+  refreshScores();
+}
+
+/* ---------------- writing ---------------- */
+function counts(t){ const words=(t.trim().match(/[A-Za-z0-9’'-]+/g)||[]).length; const sents=(t.match(/[^.!?]+[.!?]+/g)||[]).filter(s=>s.trim().length>2).length; const paras=t.split(/\n\s*\n/).filter(p=>p.trim()).length; return {words,sents,paras}; }
+function rubricTable(parent, key, rows, total, label){
+  const t=h("table",{class:"rub"});
+  const saved=store.get("rub:"+key,{});
+  rows.forEach((r,i)=>{ const tr=h("tr"); tr.innerHTML=`<td>${esc(r[0])}</td><td style="text-align:right;white-space:nowrap"></td>`;
+    const sel=h("select"); for(let k=0;k<=r[1];k++) sel.appendChild(h("option",{value:k},k)); sel.value=saved[i]||0;
+    sel.onchange=()=>{ const s=store.get("rub:"+key,{}); s[i]=+sel.value; store.set("rub:"+key,s); upd(); refreshScores(); };
+    tr.lastChild.append(sel, document.createTextNode(" / "+r[1])); t.appendChild(tr); });
+  const tot=h("tr",{class:"tot"}); tot.innerHTML=`<td>${label}</td><td style="text-align:right"><span></span> / ${total}</td>`; t.appendChild(tot);
+  const upd=()=>{ const s=store.get("rub:"+key,{}); tot.querySelector("span").textContent=rows.reduce((a,_,i)=>a+(s[i]||0),0); };
+  upd(); parent.appendChild(t);
+}
+function writingScore(){ let s=0; ["sum","ess"].forEach(k=>{ const v=store.get("rub:"+k,{}); for(const i in v) s+=v[i]; }); return s; }
+function buildWriting(){
+  const v=$("#v-writing"); const S1=D.summary, E=D.essay;
+  v.innerHTML=`<div class="h2">Part 4 · Writing</div><p class="sub">40 marks: ${esc(S1.label)} (15) + ${esc(E.label)} (25). Your writing is saved in this browser while you work.</p>`;
+  // 4.1
+  const c1=h("div",{class:"card"});
+  c1.innerHTML=`<h3>${esc(S1.label)} <span class="tag">15 marks</span></h3>`;
+  const g=h("div",{class:"grid2"});
+  const pas=h("div",{class:"passage"}); pas.innerHTML=`<h3>${esc(S1.title)}</h3>`+S1.paras.map((p,i)=>`<p>${S1.paras.length>1?`<span class="pn">${i+1}</span>`:""}${esc(p)}</p>`).join("");
+  const right=h("div");
+  right.innerHTML=`<div class="prompt"><b>${esc(S1.question)}</b></div>`;
+  const ta=h("textarea",{placeholder:"Write your summary here…"}); ta.value=store.get("txt:sum","");
+  const ct=h("div",{class:"counter"});
+  const upd1=()=>{ const c=counts(ta.value); const okS=c.sents>=S1.min&&c.sents<=S1.max; ct.innerHTML=`Words: <b>${c.words}</b> · Sentences: <b style="color:${okS?'var(--ok)':c.sents>S1.max?'var(--bad)':'var(--ink)'}">${c.sents}</b> / target ${S1.min}–${S1.max}`; store.set("txt:sum",ta.value); };
+  ta.oninput=upd1; right.append(ta,ct); upd1();
+  right.appendChild(h("p",{class:"small",style:"margin:14px 0 4px;font-weight:700"},"Did you include these main ideas? (tick the ones you wrote)"));
+  const ck=store.get("ck:sum",{});
+  S1.ideas.forEach((idea,i)=>{ const l=h("label",{class:"check"}); const cb=h("input",{type:"checkbox"}); cb.checked=!!ck[i]; cb.onchange=()=>{const s=store.get("ck:sum",{}); s[i]=cb.checked; store.set("ck:sum",s);}; l.append(cb, h("span",{},esc(idea))); right.appendChild(l); });
+  const m1=h("div",{class:"model"},`<b>Model answer</b><p style="margin-top:6px">${esc(S1.model)}</p>`);
+  right.appendChild(h("div",{class:"row",style:"margin-top:10px"})).append(h("button",{class:"btn",onclick:()=>{m1.classList.toggle("show");}},"👀 Show / hide model answer"));
+  right.appendChild(m1);
+  right.appendChild(h("p",{class:"small",style:"margin:16px 0 4px;font-weight:700"},"Mark yourself (be honest!)"));
+  rubricTable(right,"sum",S1.rubric,15,"4.1 total");
+  g.append(pas,right); c1.appendChild(g); v.appendChild(c1);
+
+  // 4.2
+  const c2=h("div",{class:"card"});
+  c2.innerHTML=`<h3>${esc(E.label)} <span class="tag">25 marks</span></h3>
+   <div class="prompt"><i>${esc(E.intro)}</i><p style="margin:8px 0 0"><b>${esc(E.task)}</b></p><ul>${E.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul><b>Write at least ${E.min_words} words in paragraphs.</b></div>`;
+  const g2=h("div",{class:"grid2"});
+  const L=h("div"), R=h("div");
+  L.appendChild(h("p",{class:"small",style:"font-weight:700;margin:0 0 6px"},"Step 1 · Plan (not marked)"));
+  E.planner.forEach((p,i)=>{ L.appendChild(h("div",{class:"small",style:"font-weight:700;margin-top:8px"},esc(p[0])+` <span class="muted" style="font-weight:500">– ${esc(p[1])}</span>`)); const t=h("textarea",{class:"plan",placeholder:"Notes…"}); t.value=store.get("plan:"+i,""); t.oninput=()=>store.set("plan:"+i,t.value); L.appendChild(t); });
+  L.appendChild(h("p",{class:"small",style:"font-weight:700;margin:16px 0 4px"},"Useful language – click a phrase to add it to your essay"));
+  const essay=h("textarea",{placeholder:"Step 2 · Write your essay here. Leave an empty line between paragraphs.",style:"min-height:420px"});
+  E.phrases.forEach(([grp,list])=>{ L.appendChild(h("div",{class:"small muted",style:"font-weight:700"},esc(grp))); const pr=h("div",{class:"phr"}); list.forEach(p=>pr.appendChild(h("button",{onclick:()=>{ const ins=p.replace(/\s*…\s*$/,"")+" "; const s=essay.selectionStart??essay.value.length; essay.value=essay.value.slice(0,s)+ins+essay.value.slice(essay.selectionEnd??s); essay.focus(); essay.selectionStart=essay.selectionEnd=s+ins.length; upd2(); }},esc(p)))); L.appendChild(pr); });
+  R.appendChild(h("p",{class:"small",style:"font-weight:700;margin:0 0 6px"},"Step 2 · Write"));
+  essay.value=store.get("txt:ess","");
+  const ct2=h("div",{class:"counter"});
+  const upd2=()=>{ const c=counts(essay.value); const pct=Math.min(100,c.words/E.min_words*100); ct2.innerHTML=`<span>Words: <b>${c.words}</b> / ${E.min_words}</span><span class="prog"><i class="${c.words>=E.min_words?'done':''}" style="width:${pct}%"></i></span><span>Paragraphs: <b>${c.paras}</b></span>`; store.set("txt:ess",essay.value); };
+  essay.oninput=upd2; R.append(essay,ct2); upd2();
+  const rowb=h("div",{class:"row",style:"margin:8px 0 12px"});
+  rowb.append(h("button",{class:"btn",onclick:async()=>{ try{ await navigator.clipboard.writeText(essay.value); toast("Essay copied"); }catch(e){ toast("Copy not allowed here – select the text and copy it"); } }},"📋 Copy my essay"));
+  R.appendChild(rowb);
+  R.appendChild(h("p",{class:"small",style:"font-weight:700;margin:6px 0 2px"},"Step 3 · Check"));
+  const checks=["I answered ALL 3 bullet points.","I gave clear reasons and examples.","I used paragraphs with topic sentences.","I used linking words and phrases from the bank.","I wrote at least "+E.min_words+" words.","I checked spelling, capital letters and full stops."];
+  const ck2=store.get("ck:ess",{});
+  checks.forEach((c,i)=>{ const l=h("label",{class:"check"}); const cb=h("input",{type:"checkbox"}); cb.checked=!!ck2[i]; cb.onchange=()=>{const s=store.get("ck:ess",{}); s[i]=cb.checked; store.set("ck:ess",s);}; l.append(cb,h("span",{},esc(c))); R.appendChild(l); });
+  const m2=h("div",{class:"model"},`<b>Model ${esc(E.type)}</b> <span class="small muted">(${counts(E.model.join("\n\n")).words} words)</span>`+E.model.map(p=>`<p style="margin-top:8px">${esc(p)}</p>`).join(""));
+  R.appendChild(h("div",{class:"row",style:"margin-top:10px"})).append(h("button",{class:"btn",onclick:()=>m2.classList.toggle("show")},"👀 Show / hide model essay"));
+  R.appendChild(m2);
+  R.appendChild(h("p",{class:"small",style:"margin:16px 0 4px;font-weight:700"},"Step 4 · Mark yourself"));
+  rubricTable(R,"ess",E.rubric,25,"4.2 total");
+  g2.append(L,R); c2.appendChild(g2); v.appendChild(c2);
+  const c3=h("div",{class:"card"}); c3.innerHTML=`<h3>✍️ More practice prompts</h3><p class="small muted" style="margin-top:-4px">Use the same planner, phrases and checklist.</p>`+E.extra.map((x,i)=>`<div class="prompt small"><b>Prompt ${i+1}.</b> ${esc(x)}</div>`).join("");
+  v.appendChild(c3);
+}
+
+/* ---------------- tips ---------------- */
+function buildTips(){
+  const adv=D.short.includes("Advanced");
+  const T=[
+    ["🔤","Part 1 · Vocabulary gap fill",["Read the WHOLE text first to understand the topic.","Look at the words just before and after the gap: is it a noun, verb, adjective or phrase?","Check grammar clues: <i>a / an</i>, plural <i>-s</i>, prepositions (e.g. <i>raise ___</i>, <i>traffic ___</i>).","Try each option in the gap and read the sentence aloud in your head.","Look for clues in the next sentence: writers often explain the gap word later."]],
+    ["🧩","Part 2 · Grammar gap fill",["Decide which grammar point is being tested (passive? conditional? linker?).","Check tense clues: <i>now, right now, every day, last week, if</i>.","Commas around a clause → non-defining relative (<i>which / who</i>, never <i>that</i>).","Linkers: is the next idea a contrast, an addition or a result?","Reread the full sentence with your answer before moving on."]],
+    ["🔎","Specific information & Details",["Underline the key words in the question.","Scan the text for those words or synonyms (the text often uses different words).","Read the sentence before and after carefully.","Watch for distractors: numbers, names or words from the text that are in the WRONG place."]],
+    ["💡","Main point / Overall meaning",["Main point of a paragraph: read its first and last sentences (topic sentence).","Overall meaning: think about the title, the introduction and the conclusion.","Avoid answers that are too narrow (only one detail) or too extreme (<i>always, never, all</i>)."]],
+    ["🕵️","Inference",["The answer is NOT written directly – you must use clues.","Ask: what does the writer suggest or imply?","The correct answer must be supported by the text; don’t use only your own opinion.","For ‘what would the writer advise…’, apply the writer’s main idea to the new situation."]],
+    ["🎭","Mood, tone & attitude",["Look for opinion words: adjectives and adverbs (<i>surprisingly, sadly, hopeful, outdated</i>).","Notice time words that show a change: <i>at first … but now</i>.","Common tones: critical, balanced, hopeful, worried, humorous, neutral."]],
+    ["🌍","Connections",["The question links the text to the real world, another situation or your own experience.","First decide what the text’s main idea or suggestion is.","Then choose the example that matches that idea most closely."]],
+    ["📝","4.1 "+(adv?"Compare & summarise":"Summary"),[adv?"Find the TWO points of view (usually one per paragraph).":"Find the main idea in each part of the text.", "Use your own words – change vocabulary and sentence structure. Do NOT copy sentences.", adv?"Use comparing/contrasting linkers: <i>whereas, while, on the other hand, in contrast</i>.":"Leave out examples and small details.", "Write exactly 4–5 sentences."]],
+    ["🖋️","4.2 "+(adv?"Comparative essay (220+ words)":"Opinion essay (200+ words)"),["Spend 5 minutes planning: one paragraph for each bullet point.","Introduction → body paragraphs → conclusion.","Answer EVERY bullet point – missing one costs a lot of marks.","Start each paragraph with a clear topic sentence.", adv?"Compare in every paragraph and give your preference with reasons and examples.":"Give your opinion clearly and support it with reasons and examples.","Save 3–5 minutes to check spelling, punctuation and word count."]],
+    ["⏱️","On exam day",["Read every instruction carefully.","Don’t spend too long on one question – mark it and come back.","Answer every multiple-choice question; there is no penalty for guessing.","Check that you have chosen only ONE answer per question."]],
+  ];
+  const v=$("#v-tips"); v.innerHTML=`<div class="h2">Exam tips by question type</div><p class="sub">Each reading question in your exam tests one of these skills. Learn how to approach each type.</p>`;
+  const g=h("div",{class:"grid2"});
+  T.forEach(([ic,t,list])=>{ const c=h("div",{class:"card tip"}); c.innerHTML=`<h4><span>${ic}</span>${t}</h4><ul class="small">${list.map(x=>`<li>${x}</li>`).join("")}</ul>`; g.appendChild(c); });
+  v.appendChild(g);
+}
+
+/* ---------------- score page ---------------- */
+function renderScorePage(){
+  const el=$("#scoreBody"); if(!el) return;
+  let mock=0; const rows=[];
+  for(const id in S.sections){ const s=S.sections[id], r=secScore(id); if(s.mock) mock+=r.got; rows.push([s.name+(s.mock?"":" (extra)"), r.got, r.max, r.done, s.count]); }
+  const ws=writingScore();
+  // skills
+  const sk={};
+  ["reading-a","reading-b"].forEach(id=>{ const s=S.sections[id]; if(!s) return; for(const i in s.skillOf){ const k=s.skillOf[i]; sk[k]=sk[k]||{ok:0,done:0,tot:0}; sk[k].tot++; const v=S.answers[id+":"+i]; if(v!==undefined){ sk[k].done++; if(v) sk[k].ok++; } } });
+  el.innerHTML=`<div class="bigstat" style="margin-bottom:18px"><div><span class="small muted">Mock exam (Parts 1–3)</span><b>${mock} / 60</b></div><div><span class="small muted">Writing (self-marked)</span><b>${ws} / 40</b></div><div><span class="small muted">Estimated total</span><b>${mock+ws} / 100</b></div></div>
+  <div class="grid2"><div class="card"><h3>By section</h3><table class="ov"><thead><tr><th>Section</th><th>Answered</th><th style="text-align:right">Score</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r[0])}</td><td class="small muted">${r[3]} / ${r[4]}</td><td class="m">${r[1]} / ${r[2]}</td></tr>`).join("")}</tbody></table></div>
+  <div class="card"><h3>Reading by question type</h3><p class="small muted" style="margin-top:-4px">Your weakest type is the one to practise next.</p>${Object.entries(sk).map(([k,v])=>`<div class="skillbar"><span>${esc(k)}</span><span class="prog"><i style="width:${v.done?v.ok/v.done*100:0}%"></i></span><span class="small muted">${v.ok}/${v.done||0}</span></div>`).join("")}
+  <div class="row" style="margin-top:16px"><button class="btn" id="resetAll">↺ Reset all answers</button></div></div></div>`;
+  $("#resetAll").onclick=()=>{ for(const id in S.sections){ for(let i=0;i<S.sections[id].count;i++){ delete S.answers[id+":"+i]; store.set("pick:"+id+":"+i,null);} } store.set("answers",S.answers); build(); go("score"); toast("All multiple-choice answers reset"); };
+}
+
+/* ---------------- routing ---------------- */
+function go(id){ if(!VIEWS.some(v=>v[0]===id)) id="overview"; document.querySelectorAll("section.view").forEach(s=>s.classList.toggle("on",s.id==="v-"+id)); document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.v===id)); }
+window.addEventListener("hashchange",()=>{ go(location.hash.slice(1)); window.scrollTo({top:0}); });
+build(); go(location.hash.slice(1)||"overview");
+</script>
+</body>
+</html>
